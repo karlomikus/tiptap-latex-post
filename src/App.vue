@@ -2,7 +2,7 @@
   <div id="app">
     <tiptap v-model="editorContent" />
     <hr>
-    <button @click="preview">Click here to preview</button>
+    <button type="button" class="btn-preview" @click="preview">Click here to preview</button>
     <hr>
     <div class="final-content">
       <h3>Preview:</h3>
@@ -72,7 +72,8 @@ body {
   margin: 0 auto;
 }
 .editor {
-  border: 3px solid rgb(117, 117, 117);
+  border: 3px solid rgb(207, 90, 75);
+  border-radius: 3%;
   padding: 10px;
 }
 .final-content {
@@ -81,5 +82,26 @@ body {
 }
 .final-content h3 {
   margin: 0 0 20px 0;
+}
+.btn-editor {
+  border: 0;
+  font-size: 1rem;
+  background: rgb(255, 206, 141);
+  padding: 4px 12px;
+  border-radius: 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.btn-editor:hover, .btn-editor:active, .btn-editor:focus {
+  background: rgb(207, 90, 75);
+}
+.btn-preview {
+  border: 2px solid rgb(75, 207, 115);
+  background: rgb(141, 255, 179);
+  border-radius: 13px;
+  display: block;
+  width: 100%;
+  font-size: 2rem;
+  padding: 6px 12px;
 }
 </style>
