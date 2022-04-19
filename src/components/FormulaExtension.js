@@ -33,6 +33,17 @@ export default Node.create({
       {
         tag: 'katex',
       },
+      {
+        tag: 'dl', // Parse wikipedia block element math formula
+        getAttrs: element => {
+          let match = element.querySelector('math');
+          if (!match) {
+            return false;
+          }
+
+          return {content: match.getAttribute('alttext')}
+        }
+      }
     ]
   },
 

@@ -13,6 +13,15 @@ export default Mark.create({
     parseHTML() {
         return [
             { tag: 'span[data-inline-katex="true"]' },
+            {
+                tag: 'span.mwe-math-element', // Parse wikipedia inline element math formula
+                getAttrs: element => {
+                    if (element.querySelectorAll('math').length == 0) {
+                        return false;
+                    }
+                    return element.querySelector('math').getAttribute('alttext')
+                }
+            }
         ]
     },
 
