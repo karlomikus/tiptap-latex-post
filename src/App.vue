@@ -50,6 +50,10 @@ export default {
           });
         })
         previewDiv.querySelectorAll('span[data-inline-katex]').forEach(el => {
+          if (el.childElementCount > 0) {
+            return false;
+          }
+
           katex.render(el.innerText, el, {
             throwOnError: false,
             strict: false,
