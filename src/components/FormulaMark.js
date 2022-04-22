@@ -1,4 +1,4 @@
-import { Mark, mergeAttributes } from '@tiptap/core'
+import { Mark, mergeAttributes, markPasteRule } from '@tiptap/core'
 
 export default Mark.create({
     name: 'formulaMark',
@@ -43,5 +43,16 @@ export default Mark.create({
                 return commands.unsetMark(this.name)
             },
         }
+    },
+
+    // Parse mark when pasting text between $$ marks
+    // Example: "This will be parsed as inline mark $$ a^2 $$."
+    addPasteRules() {
+        return [
+            markPasteRule({
+                find: /((?:\$\$)((?:[^$]+))(?:\$\$))/g,
+                type: this.type,
+            }),
+        ]
     },
 })
